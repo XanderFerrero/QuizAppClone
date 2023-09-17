@@ -1,0 +1,47 @@
+POST http://localhost:3001/api/user/
+Content-Type: application/json
+
+
+{
+    "name":"Xand",
+    "email":"X@xample.com",
+    "password":"pwrod"
+}
+
+###
+
+POST http://localhost:3001/api/user/login
+Content-Type: application/json
+
+
+{
+    "email":"test@gmail.com",
+    "password":"a"
+}
+
+
+###
+
+POST http://localhost:3001/api/quiz/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTk3MjUwZmZiZGQ5MWEwNDg0NjExNyIsImlhdCI6MTY5MzAyMDg0NywiZXhwIjoxNjkzMDI0NDQ3fQ.YFAme81Y4KlK8qCGdJuJKzUTCWju6RT_UYdhx7OUlqg
+Content-Type: application/json
+
+{
+    "title":"Title",
+    "user":"user",
+    "total":0,
+    "items":[
+        {
+            "itemId":3,            
+            "question":"what your name?",
+            "options":[],
+            "pts":3,
+            "answer":""
+        }
+    ]
+}
+
+###
+
+GET http://localhost:3001/api/quiz
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTk3MjUwZmZiZGQ5MWEwNDg0NjExNyIsImlhdCI6MTY5MzAyMDg0NywiZXhwIjoxNjkzMDI0NDQ3fQ.YFAme81Y4KlK8qCGdJuJKzUTCWju6RT_UYdhx7OUlqg

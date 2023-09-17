@@ -1,0 +1,21 @@
+import Attempt from "../models/AttemptModel.js";
+import asyncHandler from "express-async-handler";
+export const createAttempt = asyncHandler(async (req, res) => {
+    const { name, email } = req['user'];
+    const attempt = new Attempt({ ...req.body, email: email, name: name });
+    await attempt.save();
+    res.json(attempt);
+});
+export const getQuizAttempts = asyncHandler(async (req, res) => {
+    const attempts = await Attempt.find({ quizId: req.params.id });
+    res.json(attempts);
+});
+export const getUserAttempts = asyncHandler(async (req, res) => {
+    const attempts = await Attempt.find({ quizId: req.params.id, email: req["user"].email });
+    res.json(attempts);
+});
+export const delAttempt = asyncHandler(async (req, res) => {
+    const attempt = await Attempt.deleteOne({ _id: req.params.id });
+    res.json(attempt);
+});
+//# sourceMappingURL=AttemptController.js.map
