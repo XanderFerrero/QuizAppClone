@@ -35,8 +35,8 @@ app.use(error)
 
 // Serve frontend
 
-app.use(express.static(path.join(_dirname, "../../client/dist")))
-app.get("*", (_req: Request, res: Response) => {res.sendFile(path.resolve(_dirname, "..","..","client","dist","index.html"))})
+app.use(express.static(path.join(_dirname, "../dist2")))
+app.get("*", (_req: Request, res: Response) => {res.sendFile(path.resolve(_dirname, "..","dist2","index.html"))})
 
 app.listen(3001, () => {
     console.log("HELLO WORLD")
