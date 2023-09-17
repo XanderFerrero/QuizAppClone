@@ -27,8 +27,8 @@ app.use("/api/quiz", QuizRouter);
 app.use("/api/attempt", AttemptRouter);
 app.use(error);
 // Serve frontend
-app.use(express.static(path.join(_dirname, "../../client/dist")));
-app.get("*", (_req, res) => { res.sendFile(path.resolve(_dirname, "../../client/dist/index.html")); });
+app.use(express.static(path.join(_dirname, "../dist2")));
+app.get("*", (_req, res) => { res.sendFile(path.resolve(_dirname, "..", "dist2", "index.html")); });
 app.listen(3001, () => {
     console.log("HELLO WORLD");
 });
