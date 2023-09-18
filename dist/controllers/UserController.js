@@ -5,12 +5,10 @@ import bcrypt from "bcrypt";
 import * as dotenv from "dotenv";
 dotenv.config();
 export const register = asyncHandler(async (req, res) => {
-    console.log(req.body);
     const saltGen = await bcrypt.genSalt(10);
     const hashed = await bcrypt.hash(req.body.password, saltGen);
     const { name, email } = req.body;
     let user = await User.findOne({ email: email });
-    console.log(user);
     if (user) {
         res.status(400);
         throw new Error("User already registered");
@@ -33,7 +31,6 @@ export const login = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
     let user = await User.findOne({ email: email });
     if (!user) {
-        console.log(user);
         res.status(400);
         throw new Error("Email not registered");
     }
@@ -57,7 +54,6 @@ export const changePassword = asyncHandler(async (req, res) => {
     else {
         const saltGen = await bcrypt.genSalt(10);
         const hashed = await bcrypt.hash(req.body.next, saltGen);
-        console.log(hashed);
         await User.updateOne({ _id: user._id }, { password: hashed });
         res.json(user);
     }

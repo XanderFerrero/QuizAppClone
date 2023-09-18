@@ -10,7 +10,6 @@ export const createQuiz = asyncHandler(async (req, res) => {
     res.json(quiz);
 });
 export const updateQuiz = asyncHandler(async (req, res) => {
-    console.log("updated");
     const quiz = await Quiz.findByIdAndUpdate(req.params.id, {
         ...req.body,
         user: req['user'].id
@@ -19,7 +18,6 @@ export const updateQuiz = asyncHandler(async (req, res) => {
     res.json(quiz);
 });
 export const delQuiz = asyncHandler(async (req, res) => {
-    console.log(req['user'].id);
     const quiz = await Quiz.findByIdAndDelete(req.params.id);
     res.json(quiz);
 });
@@ -31,7 +29,6 @@ export const getQuizzes = asyncHandler(async (_req, res) => {
     res.json(all);
 });
 export const getMy = asyncHandler(async (req, res) => {
-    console.log(req["user"].name);
     const quizzes = await Quiz
         .find({ user: req['user'].id })
         //collation: sorting with no case sensitivity
