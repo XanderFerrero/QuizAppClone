@@ -1,4 +1,5 @@
 import Quiz from "../models/QuizModel.js"
+import Attempt from "../models/AttemptModel.js"
 import asyncHandler from "express-async-handler"
 import {Request, Response} from "express"
 
@@ -28,6 +29,7 @@ export const delQuiz = asyncHandler(async (req: Request, res: Response) => {
 
     console.log(req['user'].id)
     const quiz = await Quiz.findByIdAndDelete(req.params.id);
+    await Attempt.deleteMany({quizId: req.params.id})
     res.json(quiz)
 })
 
